@@ -1,15 +1,29 @@
-
-import { createStore } from 'vuex'
+// import { createStore } from "./gvuex";
+import { createStore } from "vuex";
 
 const store = createStore({
-  state () {
+  state() {
     return {
-      count: 666
-    }
+      count: 0,
+    };
+  },
+  getters: {
+    double(state) {
+      return state.count * 2;
+    },
   },
   mutations: {
-    add (state) {
-      state.count++
-    }
-  }
-})
+    add(state) {
+      state.count++;
+    },
+  },
+  actions: {
+    asyncAdd({ commit }) {
+      setTimeout(() => {
+        commit("add");
+      }, 1000);
+    },
+  },
+});
+
+export default store;
