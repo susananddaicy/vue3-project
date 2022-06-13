@@ -1,5 +1,10 @@
-<template>
-  <h1>这是关于页面</h1>
+
+ <template>
+  <Heading :level="1">hello vue3</Heading>
 </template>
+
+<script setup>
+import Heading from '../components/Heading.jsx'
+</script>
 
 
