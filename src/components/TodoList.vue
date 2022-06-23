@@ -26,13 +26,18 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watchEffect } from "vue";
 let title = ref("");
 let todos = ref([{ title: '学习Vue', done: false }])
 
 let showModal = ref(false);
 
+
+
 function addTodo() {
+
+
+  watchEffect(() => console.log(todos.value))
 
   if(!title.value) { 
     showModal.value = true;
@@ -52,6 +57,7 @@ let active = computed(() => {
   return todos.value.filter((v) => !v.done).length;
 });
 let all = computed(() => todos.value.length);
+
 let allDone = computed({
   get: function () {
     return active.value === 0;
