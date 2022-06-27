@@ -5,6 +5,7 @@ import { isObject, hasOwn } from "../shared"
 
 const get = createGetter();
 const set = createSetter();
+const shallowReactiveGet = createGetter(true)
 
 function createGetter(shallow = false) {
   return function get(target, key, receiver) {
@@ -32,3 +33,8 @@ export const mutableHandles = {
   get,
   set,
 };
+
+export const shallowReactiveHandlers = {
+  get: shallowReactiveGet,
+  set,
+}

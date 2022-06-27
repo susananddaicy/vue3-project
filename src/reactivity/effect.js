@@ -5,7 +5,7 @@ let activeEffect = null;
 
 export function track(target, type, key) {
 
-  console.log(`触发 track -> target: ${target} type:${type} key:${key}`)
+  console.log(`触发 track -> target: ${JSON.stringify(target)} type:${type} key:${key}`)
 
   // 1. 先基于 target 找到对应的 dep
   // 如果是第一次的话，那么就需要初始化
@@ -69,7 +69,7 @@ export function effect(fn, options = {}) {
     }
   }
   if (!options.lazy) {
-    //没有配置lazy 直接执行
+    // 没有配置lazy 直接执行
     effectFn()
   }
   effectFn.scheduler = options.scheduler // 调度时机 watchEffect回用到
